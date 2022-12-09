@@ -5,6 +5,7 @@ import { buttonEffect, formatearDinero } from "./helpers";
 
 function App() {
   const [cantidad, setCantidad] = useState(50000);
+  const [meses, setMeses] = useState(6)
 
   const MIN = 10000;
   const MAX = 100000;
@@ -60,6 +61,21 @@ function App() {
           />
         </div>
         <p className="my-10 text-4xl font-bold text-center">{formatearDinero(cantidad)}</p>
+
+        <h2 className="text-xl font-semibold text-center">Elige un <span className="italic text-indigo-800 border-b-2 border-indigo-800">plazo</span> a pagar</h2>
+
+        <div className="flex justify-center">
+          <select
+            className="w-3/5 p-2 mt-5 text-lg font-bold text-center border rounded-md bg-fuchsia-200 border-fuchsia-900"
+            value={meses}
+            onChange={ e => setMeses(+e.target.value)}
+          >
+            <option value="6">6 Meses</option>
+            <option value="12">12 Meses</option>
+            <option value="18">18 Meses</option>
+            <option value="24">24 Meses</option>
+          </select>
+        </div>
       </div>
     </>
   )
