@@ -6,6 +6,17 @@ function buttonEffect(btn){
     }, 200);
   }
 
+//Formatear string -> $
+const formatearDinero = (valor) => {
+    const formatter = new Intl.NumberFormat('es-AR', {
+        style: 'currency',
+        currency: 'ARS'
+    });
+
+    return formatter.format(valor);
+}
+
   export {
-    buttonEffect
+    buttonEffect,
+    formatearDinero
   }

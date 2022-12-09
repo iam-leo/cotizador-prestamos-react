@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./components/Button";
 import Header from "./components/Header";
-import { buttonEffect } from "./helpers";
+import { buttonEffect, formatearDinero } from "./helpers";
 
 function App() {
   const [cantidad, setCantidad] = useState(50000);
@@ -59,7 +59,7 @@ function App() {
             effect={buttonEffect}
           />
         </div>
-        <p className="my-10 text-4xl font-bold text-center">${cantidad}</p>
+        <p className="my-10 text-4xl font-bold text-center">{formatearDinero(cantidad)}</p>
       </div>
     </>
   )
