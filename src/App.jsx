@@ -7,11 +7,18 @@ function App() {
   const [cantidad, setCantidad] = useState(50000);
   const [meses, setMeses] = useState(6);
   const [total, setTotal] = useState(0);
+  const [cuota, setCuota] = useState(0);
 
   useEffect(() => {
-    const resultadoTotalPagar = formatearDinero(totalPagar(cantidad,meses).toFixed(2));
+    //Total a pagar
+    const resultadoTotalPagar = totalPagar(cantidad,meses).toFixed(2);
     setTotal(resultadoTotalPagar);
   }, [cantidad, meses]);
+
+  useEffect(() => {
+    //Total Cuota
+    setCuota(total / meses);
+  }, [total])
 
   const MIN = 10000;
   const MAX = 100000;
@@ -86,8 +93,8 @@ function App() {
           <h2 className="text-xl font-semibold text-center">Resumen de <span className="italic font-bold text-indigo-800">pagos</span></h2>
           <div className="flex flex-col items-center">
             <p className="text-lg font-bold">{meses} Meses</p>
-            <p className="text-lg font-bold">Total a pagar: {total}</p>
-            <p className="text-lg font-bold">Cuota</p>
+            <p className="text-lg font-bold">Total a pagar: {formatearDinero(total)}</p>
+            <p className="text-lg font-bold">Cuota: {formatearDinero(cuota)}</p>
           </div>
         </div>
       </div>

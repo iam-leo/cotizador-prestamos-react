@@ -45,8 +45,8 @@ const totalPagar = (cantidad, plazo) => {
   return total;
 }
 
-  export {
-    buttonEffect,
-    formatearDinero,
-    totalPagar
-  }
+export {
+  buttonEffect,
+  formatearDinero,
+  totalPagar
+}
