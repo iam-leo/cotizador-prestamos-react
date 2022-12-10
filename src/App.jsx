@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./components/Button";
 import Header from "./components/Header";
-import { buttonEffect, formatearDinero } from "./helpers";
+import { buttonEffect, formatearDinero, totalPagar } from "./helpers";
 
 function App() {
   const [cantidad, setCantidad] = useState(50000);
-  const [meses, setMeses] = useState(6)
+  const [meses, setMeses] = useState(6);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const resultadoTotalPagar = formatearDinero(totalPagar(cantidad,meses).toFixed(2));
+    setTotal(resultadoTotalPagar);
+  }, [cantidad, meses]);
 
   const MIN = 10000;
   const MAX = 100000;
@@ -75,6 +81,14 @@ function App() {
             <option value="18">18 Meses</option>
             <option value="24">24 Meses</option>
           </select>
+        </div>
+        <div className="p-5 my-5 space-y-3 rounded-md bg-fuchsia-300">
+          <h2 className="text-xl font-semibold text-center">Resumen de <span className="italic font-bold text-indigo-800">pagos</span></h2>
+          <div className="flex flex-col items-center">
+            <p className="text-lg font-bold">{meses} Meses</p>
+            <p className="text-lg font-bold">Total a pagar: {total}</p>
+            <p className="text-lg font-bold">Cuota</p>
+          </div>
         </div>
       </div>
     </>
